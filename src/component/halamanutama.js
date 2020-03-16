@@ -57,20 +57,20 @@ class Halamanutama extends Component {
       // ========================function menampilkan quantity=========================
   checkquantity = () =>{
     // console.log(this.state.selectedOutlet)
-    // if(this.state.selectedOutlet&&this.state.selectedProduct !== null){
-             Axios.get(`http://sci.rotio.id:5558/webserv/webapi/storage/${this.state.selectedOutlet}/${this.state.selectedProduct}`)
-             .then((res)=>{
-               this.setState({quantity:res.data})
-              //  console.log(res.data.result)
-              }).then(()=>{
-                return this.state.quantity.result.map((val)=>{
-                  // this.state.artikel.map(val1)
-                  alert('Lokasi: '+val.loc_name+'\n'+'Nama: '+val.name+'\n' + 'Stok tersedia: '+val.qty)
-                })
-              })
-    // }else{
-    //   alert('Tolong isi semua data')
-    // }
+    if(this.state.selectedOutlet||this.state.selectedProduct == null){
+      alert('Tolong isi semua data')
+    }else{
+      Axios.get(`http://sci.rotio.id:5558/webserv/webapi/storage/${this.state.selectedOutlet}/${this.state.selectedProduct}`)
+      .then((res)=>{
+        this.setState({quantity:res.data})
+       //  console.log(res.data.result)
+       }).then(()=>{
+         return this.state.quantity.result.map((val)=>{
+           // this.state.artikel.map(val1)
+           alert('Lokasi: '+val.loc_name+'\n'+'Nama: '+val.name+'\n' + 'Stok tersedia: '+val.qty)
+         })
+       })
+    }
   }
 
           // ========================function menampilkan quantity=========================
