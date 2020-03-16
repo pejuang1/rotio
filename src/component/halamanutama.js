@@ -29,7 +29,7 @@ class Halamanutama extends Component {
 
      componentDidMount() {
         // ======================API_product================
-    fetch(`http://sci.rotio.id:5558/webserv/webapi/products/`, )
+    fetch(`https://sci.rotio.id:5558/webserv/webapi/products/`, )
       .then(res => res.json())
       .then(json => {
         const { data: product } = json;
@@ -38,7 +38,7 @@ class Halamanutama extends Component {
       });
 
       // =====================API_artikel===================
-      Axios.get(`http://sci.rotio.id:5558/webserv/webapi/warehouses/`)
+      Axios.get(`https://sci.rotio.id:5558/webserv/webapi/warehouses/`)
         .then((res)=>{
            this.setState({artikel:res.data})
         })
@@ -57,10 +57,8 @@ class Halamanutama extends Component {
       // ========================function menampilkan quantity=========================
   checkquantity = () =>{
     // console.log(this.state.selectedOutlet)
-    if(this.state.selectedOutlet||this.state.selectedProduct == null){
-      alert('Tolong isi semua data')
-    }else{
-      Axios.get(`http://sci.rotio.id:5558/webserv/webapi/storage/${this.state.selectedOutlet}/${this.state.selectedProduct}`)
+    // if(this.state.selectedOutlet||this.state.selectedProduct == null){
+      Axios.get(`https://sci.rotio.id:5558/webserv/webapi/storage/${this.state.selectedOutlet}/${this.state.selectedProduct}`)
       .then((res)=>{
         this.setState({quantity:res.data})
        //  console.log(res.data.result)
@@ -70,7 +68,9 @@ class Halamanutama extends Component {
            alert('Lokasi: '+val.loc_name+'\n'+'Nama: '+val.name+'\n' + 'Stok tersedia: '+val.qty)
          })
        })
-    }
+    // }else{
+    //   alert('Tolong isi semua data')
+    // }
   }
 
           // ========================function menampilkan quantity=========================
